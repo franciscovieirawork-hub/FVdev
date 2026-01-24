@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header';
+import SocialLinks from '../components/SocialLinks';
+import AdditionalLinks from '../components/AdditionalLinks';
+
+const socialLinks = [
+  { label: 'gh', href: 'https://github.com' },
+  { label: 'x', href: 'https://twitter.com' },
+  { label: 'twitch', href: 'https://twitch.tv' },
+  { label: 'discord', href: 'https://discord.gg' },
+];
+
+const additionalLinks = [
+  { label: 'Portfolio', href: '/' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Contact', href: '/contact' },
+];
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>FVDev - Portfolio</title>
+    <meta name="description" content="FVDev - Builds things" />
+  </head>
+  <body>
+    <main>
+      <div class="content-wrapper">
+        <Header client:load />
+        <SocialLinks client:load links={socialLinks} />
+        <AdditionalLinks client:load links={additionalLinks} />
+      </div>
+    </main>
+  </body>
+</html>
+
+<style is:global>
+  main {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-wrapper {
+    align-items: start;
+  }
+</style>

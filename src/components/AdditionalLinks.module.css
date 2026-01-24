@@ -1,0 +1,52 @@
+.container {
+  padding: 40px 20px;
+  margin-top: 40px;
+  border-top: 1px solid #333333;
+}
+
+.content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.content h2 {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+  color: #cccccc;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.list li a {
+  color: #999999;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease;
+}
+
+.list li a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .content h2 {
+    font-size: 0.9rem;
+  }
+
+  .list li a {
+    font-size: 0.85rem;
+  }
+}

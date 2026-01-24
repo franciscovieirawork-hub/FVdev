@@ -1,0 +1,36 @@
+.container {
+  padding: 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.link:hover {
+  border-bottom: 1px solid #ffffff;
+  opacity: 1;
+}
+
+@media (max-width: 640px) {
+  .nav {
+    gap: 15px;
+  }
+
+  .link {
+    font-size: 0.85rem;
+  }
+}
