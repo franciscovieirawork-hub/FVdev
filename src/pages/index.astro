@@ -1,14 +1,13 @@
 ---
 import '../styles/global.css';
-import Header from '../components/Header';
-import SocialLinks from '../components/SocialLinks';
-import AdditionalLinks from '../components/AdditionalLinks';
+import Header from '../components/Header.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import AdditionalLinks from '../components/AdditionalLinks.astro';
 
 const socialLinks = [
-  { label: 'gh', href: 'https://github.com' },
-  { label: 'x', href: 'https://twitter.com' },
-  { label: 'twitch', href: 'https://twitch.tv' },
-  { label: 'discord', href: 'https://discord.gg' },
+  { label: 'github', href: 'https://github.com/franciscovieirawork-hub' },
+  { label: 'x', href: 'https://twitter.com/chicao_nft' },
+  { label: 'linkedin', href: 'https://pt.linkedin.com/in/franciscovieirafront' },
 ];
 
 const additionalLinks = [
@@ -32,9 +31,9 @@ const additionalLinks = [
   <body>
     <main>
       <div class="content-wrapper">
-        <Header client:load />
-        <SocialLinks client:load links={socialLinks} />
-        <AdditionalLinks client:load links={additionalLinks} />
+        <Header />
+        <SocialLinks links={socialLinks} />
+        <AdditionalLinks links={additionalLinks} />
       </div>
     </main>
   </body>

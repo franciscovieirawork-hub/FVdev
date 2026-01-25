@@ -1,0 +1,65 @@
+---
+interface Props {
+  links: Array<{ label: string; href: string }>;
+}
+
+const { links } = Astro.props;
+---
+
+<div class="container">
+  <nav class="nav">
+    {links.map((link) => (
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="link"
+      >
+        [{link.label}]
+      </a>
+    ))}
+  </nav>
+</div>
+
+<style>
+  .container {
+    padding: 30px 20px;
+  }
+
+  .nav {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 800px;
+  }
+
+  .link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .link:hover {
+    border-bottom: 1.3px solid #cfff04;
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .nav {
+      gap: 15px;
+    }
+
+    .link {
+      font-size: 0.85rem;
+    }
+  }
+</style>
+
