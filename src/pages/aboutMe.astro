@@ -1,0 +1,278 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import Loader from '../components/Loader.astro';
+
+// Mock Data
+const aboutData = {
+  title: 'about me',
+  subtitle: 'software developer passionate about building scalable and high-quality digital experiences',
+  paragraphs: [
+    'Hello! I’m Francisco, a full-stack software developer with a strong focus on building modern, scalable, and user-centered web applications. I enjoy transforming complex ideas into clean, efficient, and maintainable digital solutions.',
+    'I specialize in TypeScript and React, with solid experience across the full stack, including application architecture, object-oriented design, and backend development with C#. I value well-structured systems, clean code, and thoughtful technical decisions that scale over time.',
+    'I am deeply passionate about software engineering and continuously explore AI-driven tools and workflows to enhance productivity, code quality, and delivery speed—while always maintaining strong engineering standards and best practices.',
+    'Outside of development, I have a strong interest in physics-related fields such as mathematics, astronomy, and aerodynamics. I am also a car enthusiast, particularly fascinated by high-performance sports cars and how aerodynamics influence design and engineering.',
+    'I thrive in collaborative, modern, and relaxed teams that value ownership, knowledge sharing, and continuous improvement. I am always open to new challenges, opportunities, and meaningful collaborations.'
+  ],
+  linkedinUrl: 'https://pt.linkedin.com/in/franciscovieirafront',
+  skills: [
+    'TypeScript',
+    'React',
+    'Astro',
+    'Next',
+    'Vercel',
+    'JavaScript',
+    'C#',
+    'Object-Oriented Programming',
+    'Software Architecture',
+    'Full-Stack Development',
+    'CSS',
+    'Web Development',
+    'Azure Devops',
+    'Claude Code',
+    'Cursor',
+  ],
+  ctaText: 'Want to learn more about my work and experience?',
+  ctaButtonText: 'Visit my LinkedIn'
+};
+
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>About Me - FVDev</title>
+    <meta name="description" content="Sobre Francisco Vieira" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <Loader />
+    <main>
+      <div class="container">
+        <!-- Back Button -->
+        <a href="/" class="back-btn">← voltar</a>
+
+        <!-- Page Header -->
+        <section class="about-header">
+          <h1>{aboutData.title}</h1>
+          <p class="subtitle">{aboutData.subtitle}</p>
+        </section>
+
+        <!-- About Content -->
+        <section class="about-content">
+          <div class="about-text">
+            {aboutData.paragraphs.map((paragraph, index) => (
+              <p>
+                {index === aboutData.paragraphs.length - 1 ? (
+                  <>
+                    {paragraph}
+                    <a href={aboutData.linkedinUrl} target="_blank" class="highlight-link">
+                      Connect with me
+                    </a>
+                  </>
+                ) : (
+                  paragraph
+                )}
+              </p>
+            ))}
+          </div>
+
+          <div class="skills-section">
+            <h2>skills</h2>
+            <div class="skills-grid">
+              {aboutData.skills.map((skill) => (
+                <span class="skill">{skill}</span>
+              ))}
+            </div>
+          </div>
+
+          <div class="cta-section">
+            <p>{aboutData.ctaText}</p>
+            <a href={aboutData.linkedinUrl} target="_blank" class="cta-button">
+              {aboutData.ctaButtonText}
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Back Button */
+  .back-btn {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: #999999;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .back-btn:hover {
+    color: #ffff00;
+    border-bottom: 1px solid #ffff00;
+  }
+
+  /* About Header */
+  .about-header {
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333333;
+  }
+
+  .about-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #999999;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* About Content */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .about-text {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Highlight Links */
+  .highlight-link {
+    color: #ffff00;
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 2px solid #ffff00;
+    transition: all 0.2s ease;
+  }
+
+  .highlight-link:hover {
+    opacity: 0.8;
+  }
+
+  /* Skills Section */
+  .skills-section h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    color: #cccccc;
+  }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+  }
+
+  .skill {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    padding: 12px 16px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999999;
+    transition: all 0.2s ease;
+  }
+
+  .skill:hover {
+    border-color: #ffff00;
+    color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.05);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #333333;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+    color: #999999;
+    margin-bottom: 20px;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #ffff00;
+    color: #ffff00;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #ffff00;
+    color: #0f0f0f;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    main {
+      padding: 30px 20px;
+    }
+
+    .about-header h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+    }
+
+    .about-text p {
+      font-size: 0.9rem;
+    }
+
+    .skills-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .about-content {
+      gap: 40px;
+    }
+  }
+</style>

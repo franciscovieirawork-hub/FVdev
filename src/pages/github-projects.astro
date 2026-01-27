@@ -1,0 +1,467 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import Loader from '../components/Loader.astro';
+
+// Mock Data - Projects
+const projectsData = {
+  projects: [
+    {
+      id: 1,
+      title: 'useCall & useCallGraphQL',
+      shortDescription: 'Powerful React hooks for REST API and GraphQL calls',
+      description: [
+        'A comprehensive collection of React hooks for handling REST API and GraphQL requests with advanced features.',
+        'The useCall hook provides a fully-featured solution for REST API calls with automatic caching, error handling, and request management.',
+        'The useCallGraphQL hook offers similar functionality specifically optimized for GraphQL queries and mutations, supporting both string queries and DocumentNode format.',
+        'Both hooks include smart caching, TypeScript support, error callbacks, request cancellation, and complete state management.'
+      ],
+      features: [
+        'Smart cache system that prevents duplicate requests',
+        'Complete TypeScript support with generics',
+        'Error handling with success/error callbacks',
+        'Request cancellation and refetch capabilities',
+        'Support for custom headers and credentials',
+        'GraphQL variables and operation names support',
+        'Configurable cache time and validation',
+        'Automatic cleanup on component unmount'
+      ],
+      technologies: [
+        'React',
+        'TypeScript',
+        'GraphQL',
+        'REST API',
+        'Vite'
+      ],
+      repoUrl: 'https://github.com/franciscovieirawork-hub/useCall_useCallGraphQL',
+      liveUrl: null
+    },
+    {
+      id: 2,
+      title: 'React Card Component System',
+      shortDescription: 'Flexible and reusable card components with state management',
+      description: [
+        'A modern, fully-featured card component system built with React and TypeScript.',
+        'This system provides two types of cards: base cards for displaying simple content and expandable cards for collapsible content.',
+        'Features a powerful selection system with radio buttons and global state management using Zustand.',
+        'Includes comprehensive state management, responsive design, smooth animations, and full TypeScript type safety.'
+      ],
+      features: [
+        'Two card types: Base cards and Expandable cards',
+        'Radio button-based selection system',
+        'Global state management with Zustand',
+        'Fully responsive and mobile-friendly design',
+        'Smooth animations and transitions',
+        'CSS-in-JS styling with Styled Components',
+        'Full TypeScript support',
+        'Accessible and semantic HTML'
+      ],
+      technologies: [
+        'React 19',
+        'TypeScript',
+        'Zustand',
+        'Styled Components',
+        'Emotion',
+        'Vite'
+      ],
+      repoUrl: 'https://github.com/franciscovieirawork-hub/react-card',
+      liveUrl: null
+    }
+  ]
+};
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Projects - FVDev</title>
+    <meta name="description" content="My open-source projects and work" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <Loader />
+    <main>
+      <div class="container">
+        <!-- Back Button -->
+        <a href="/" class="back-btn">← back</a>
+
+        <!-- GitHub Link -->
+        <div class="github-link-top">
+          <a href="https://github.com/franciscovieirawork-hub" target="_blank" rel="noopener noreferrer" class="github-btn">
+            → visit my github
+          </a>
+        </div>
+
+        <!-- Page Header -->
+        <section class="projects-header">
+          <h1>projects</h1>
+          <p class="subtitle">open-source projects and experiments</p>
+        </section>
+
+        <!-- Projects List -->
+        <section class="projects-list">
+          {projectsData.projects.map((project) => (
+            <div class="project-card">
+              <div class="project-header">
+                <h2 class="project-title">{project.title}</h2>
+                <p class="project-short-desc">{project.shortDescription}</p>
+              </div>
+
+              <div class="project-description">
+                {project.description.map((para) => (
+                  <p>{para}</p>
+                ))}
+              </div>
+
+              <div class="features-section">
+                <h3>key features</h3>
+                <ul class="features-list">
+                  {project.features.map((feature) => (
+                    <li>✓ {feature}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="technologies">
+                <h3>tech stack</h3>
+                <div class="tech-tags">
+                  {project.technologies.map((tech) => (
+                    <span class="tech-tag">{tech}</span>
+                  ))}
+                </div>
+              </div>
+
+              <div class="project-actions">
+                <a href={project.repoUrl} target="_blank" rel="noopener noreferrer" class="action-button repo-btn">
+                  → view repository
+                </a>
+                {project.liveUrl && (
+                  <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="action-button demo-btn">
+                    → live demo
+                  </a>
+                )}
+              </div>
+            </div>
+          ))}
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+          <p>Interested in my work? Check out more on GitHub.</p>
+          <a href="https://github.com/franciscovieirawork-hub" target="_blank" rel="noopener noreferrer" class="cta-button">
+            → view all projects
+          </a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  /* Back Button */
+  .back-btn {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #999999;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .back-btn:hover {
+    color: #ffff00;
+    border-bottom: 1px solid #ffff00;
+  }
+
+  /* GitHub Link Top */
+  .github-link-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+  }
+
+  .github-btn {
+    color: #ffff00;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .github-btn:hover {
+    border-bottom: 1px solid #ffff00;
+    opacity: 0.8;
+  }
+
+  /* Projects Header */
+  .projects-header {
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333333;
+  }
+
+  .projects-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #999999;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Projects List */
+  .projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    margin-bottom: 60px;
+  }
+
+  .project-card {
+    padding: 40px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.01);
+    transition: all 0.2s ease;
+  }
+
+  .project-card:hover {
+    border-color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.03);
+  }
+
+  .project-header {
+    margin-bottom: 25px;
+  }
+
+  .project-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px 0;
+  }
+
+  .project-short-desc {
+    font-size: 1rem;
+    color: #ffff00;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .project-description {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+  }
+
+  .project-description p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #e0e0e0;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Features Section */
+  .features-section {
+    margin-bottom: 30px;
+  }
+
+  .features-section h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 15px 0;
+    color: #cccccc;
+    text-transform: uppercase;
+  }
+
+  .features-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .features-list li {
+    font-size: 0.9rem;
+    color: #999999;
+    letter-spacing: 0.01em;
+  }
+
+  .features-list li:hover {
+    color: #ffff00;
+  }
+
+  /* Technologies Section */
+  .technologies {
+    margin-bottom: 30px;
+  }
+
+  .technologies h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 15px 0;
+    color: #cccccc;
+    text-transform: uppercase;
+  }
+
+  .tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tech-tag {
+    display: inline-block;
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    color: #cccccc;
+    padding: 6px 12px;
+    border-radius: 3px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+  }
+
+  .tech-tag:hover {
+    border-color: #ffff00;
+    color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.05);
+  }
+
+  /* Project Actions */
+  .project-actions {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .action-button {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid #333333;
+    color: #cccccc;
+    padding: 10px 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+  }
+
+  .action-button:hover {
+    border-color: #ffff00;
+    color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.05);
+  }
+
+  .repo-btn {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  .demo-btn {
+    flex: 1;
+    min-width: 150px;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #333333;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+    color: #999999;
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #ffff00;
+    color: #ffff00;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #ffff00;
+    color: #0f0f0f;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    main {
+      padding: 30px 20px;
+    }
+
+    .projects-header h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+    }
+
+    .project-card {
+      padding: 25px;
+    }
+
+    .project-title {
+      font-size: 1.3rem;
+    }
+
+    .projects-list {
+      gap: 30px;
+    }
+
+    .project-actions {
+      flex-direction: column;
+    }
+
+    .action-button {
+      width: 100%;
+    }
+  }
+</style>

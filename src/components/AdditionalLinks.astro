@@ -8,11 +8,11 @@ const { links } = Astro.props;
 
 <div class="container">
   <div class="content">
-    <h2>Additional Links</h2>
+    <h2>additional Links</h2>
     <ul class="list">
       {links.map((link) => (
         <li>
-          <a href={link.href} target="_blank" rel="noopener noreferrer">
+          <a href={link.href} rel="noopener noreferrer">
             {link.label}
           </a>
         </li>

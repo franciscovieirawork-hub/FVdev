@@ -1,0 +1,69 @@
+---
+---
+
+<style>
+  @keyframes fadeOutTrail {
+    0% {
+      opacity: 1;
+      transform: translateY(0px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(15px) scale(0.2);
+    }
+  }
+
+  .trail-spark {
+    position: fixed;
+    pointer-events: none;
+    width: 2px;
+    height: 2px;
+    background: #ffff00;
+    border-radius: 50%;
+    box-shadow: 0 0 4px #ffff00, 0 0 8px rgba(255, 255, 0, 0.8);
+    animation: fadeOutTrail 0.7s ease-out forwards;
+    z-index: 9998;
+  }
+</style>
+
+<script>
+  let mouseX = 0;
+  let mouseY = 0;
+  let lastTrailTime = 0;
+
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    const now = Date.now();
+    // Criar estilhaços a cada 8ms para trail denso
+    if (now - lastTrailTime > 8) {
+      createSpark(mouseX, mouseY);
+      lastTrailTime = now;
+    }
+  });
+
+  function createSpark(x, y) {
+    const spark = document.createElement('div');
+    spark.className = 'trail-spark';
+
+    // Offset aleatório super pequeno
+    const offsetX = (Math.random() - 0.5) * 15;
+    const offsetY = (Math.random() - 0.5) * 15;
+
+    // Posição fixa no viewport (não relativa ao documento)
+    spark.style.left = (x + offsetX) + 'px';
+    spark.style.top = (y + offsetY) + 'px';
+    spark.style.margin = '0';
+    spark.style.padding = '0';
+
+    document.body.appendChild(spark);
+
+    // Remover após animação
+    setTimeout(() => {
+      spark.remove();
+    }, 700);
+  }
+</script>
+
+

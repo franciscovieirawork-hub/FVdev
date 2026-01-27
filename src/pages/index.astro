@@ -1,8 +1,10 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import AdditionalLinks from '../components/AdditionalLinks.astro';
+import Loader from '../components/Loader.astro';
 
 const socialLinks = [
   { label: 'github', href: 'https://github.com/franciscovieirawork-hub' },
@@ -11,10 +13,10 @@ const socialLinks = [
 ];
 
 const additionalLinks = [
-  { label: 'Portfolio', href: '/' },
-  { label: 'Blog', href: '/blog' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'Contact', href: '/contact' },
+  { label: 'about me', href: '/aboutMe' },
+  { label: 'professional experience', href: '/projects' },
+  { label: 'github projects', href: '/github-projects' },
+  { label: 'get in touch', href: '/contact' },
 ];
 ---
 
@@ -22,13 +24,15 @@ const additionalLinks = [
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>FVDev - Portfolio</title>
     <meta name="description" content="FVDev - Builds things" />
+    <ViewTransitions />
   </head>
   <body>
+    <Loader />
     <main>
       <div class="content-wrapper">
         <Header />

@@ -1,0 +1,345 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '../styles/global.css';
+import Loader from '../components/Loader.astro';
+
+// Contact Data
+const contactData = {
+  whatsapp: '+351 932 141 109',
+  email: 'francisco@example.com',
+  introduction: "I'm a software developer with a strong passion for building modern, scalable, and high-performance digital experiences. Whether you're looking to discuss technical solutions, explore collaboration opportunities, or simply connect and exchange ideas, I'd be glad to hear from you.",
+  cta: 'Get in touch and let\'s explore what we can build together.',
+  socialLinks: [
+    { label: 'LinkedIn', href: 'https://pt.linkedin.com/in/franciscovieirafront' },
+    { label: 'GitHub', href: 'https://github.com/franciscovieirawork-hub' },
+    { label: 'Twitter/X', href: 'https://twitter.com/chicao_nft' }
+  ]
+};
+
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Contact - FVDev</title>
+    <meta name="description" content="Get in touch" />
+    <ViewTransitions />
+  </head>
+  <body>
+    <Loader />
+    <main>
+      <div class="container">
+        <!-- Back Button -->
+        <a href="/" class="back-btn">← back</a>
+
+        <!-- Page Header -->
+        <section class="contact-header">
+          <h1>get in touch</h1>
+          <p class="subtitle">let's work together</p>
+        </section>
+
+        <!-- Contact Content -->
+        <section class="contact-content">
+          <div class="introduction">
+            <p>{contactData.introduction}</p>
+          </div>
+
+          <!-- Contact Info -->
+          <div class="contact-info">
+            <h2>direct contact</h2>
+            <div class="info-items">
+              <div class="info-item">
+                <span class="info-label">whatsapp</span>
+                <a href={`https://wa.me/${contactData.whatsapp.replace(/[^0-9]/g, '')}`} target="_blank" rel="noopener noreferrer" class="info-value whatsapp-link">
+                  {contactData.whatsapp}
+                </a>
+              </div>
+              <div class="info-item">
+                <span class="info-label">email</span>
+                <a href={`mailto:${contactData.email}`} class="info-value email-link">
+                  {contactData.email}
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Social Links -->
+          <div class="social-methods">
+            <h2>social networks</h2>
+            <div class="social-links">
+              {contactData.socialLinks.map((link) => (
+                <a href={link.href} target="_blank" rel="noopener noreferrer" class="social-link">
+                  → {link.label}
+                </a>
+              ))}
+            </div>
+          </div>
+
+          <!-- CTA Section -->
+          <div class="cta-section">
+            <p>{contactData.cta}</p>
+            <a href={`mailto:${contactData.email}`} class="cta-button">
+              send an email
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
+
+<style>
+  main {
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* Back Button */
+  .back-btn {
+    display: inline-block;
+    margin-bottom: 40px;
+    color: #999999;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .back-btn:hover {
+    color: #ffff00;
+    border-bottom: 1px solid #ffff00;
+  }
+
+  /* Contact Header */
+  .contact-header {
+    margin-bottom: 60px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #333333;
+  }
+
+  .contact-header h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 15px;
+    line-height: 1.2;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+    color: #999999;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  /* Contact Content */
+  .contact-content {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  /* Introduction */
+  .introduction {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .introduction p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #e0e0e0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Contact Info */
+  .contact-info {
+    padding: 40px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.01);
+    transition: all 0.2s ease;
+  }
+
+  .contact-info:hover {
+    border-color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.03);
+  }
+
+  .contact-info h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 25px 0;
+    color: #cccccc;
+    text-transform: uppercase;
+  }
+
+  .info-items {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .info-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #999999;
+    text-transform: uppercase;
+  }
+
+  .info-value {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .email-link {
+    color: #ffff00;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .email-link:hover {
+    border-bottom: 1px solid #ffff00;
+    opacity: 0.8;
+  }
+
+  .whatsapp-link {
+    color: #ffff00;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .whatsapp-link:hover {
+    border-bottom: 1px solid #ffff00;
+    opacity: 0.8;
+  }
+
+  /* Social Methods */
+  .social-methods {
+    padding: 40px;
+    border: 1px solid #333333;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.01);
+    transition: all 0.2s ease;
+  }
+
+  .social-methods:hover {
+    border-color: #ffff00;
+    background-color: rgba(255, 255, 0, 0.03);
+  }
+
+  .social-methods h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 25px 0;
+    color: #cccccc;
+    text-transform: uppercase;
+  }
+
+  .social-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .social-link {
+    display: inline-block;
+    color: #ffff00;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .social-link:hover {
+    border-bottom: 1px solid #ffff00;
+    opacity: 0.8;
+  }
+
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    padding: 40px 0;
+    border-top: 1px solid #333333;
+  }
+
+  .cta-section p {
+    font-size: 1rem;
+    color: #999999;
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid #ffff00;
+    color: #ffff00;
+    padding: 12px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    text-transform: capitalize;
+    transition: all 0.2s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #ffff00;
+    color: #0f0f0f;
+  }
+
+  /* Responsive */
+  @media (max-width: 640px) {
+    main {
+      padding: 30px 20px;
+    }
+
+    .contact-header h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+    }
+
+    .contact-methods {
+      padding: 25px;
+    }
+
+    .contact-text p {
+      font-size: 0.9rem;
+    }
+
+    .contact-content {
+      gap: 30px;
+    }
+  }
+</style>
