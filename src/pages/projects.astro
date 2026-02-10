@@ -127,23 +127,23 @@ const professionalExperience = {
 };
 
 const formatDate = (dateString: string) => {
-  if (dateString === 'Present') return 'Presente';
+  if (dateString === 'Present') return 'Present';
   const [year, month] = dateString.split('-');
   const date = new Date(parseInt(year), parseInt(month) - 1);
-  return new Intl.DateTimeFormat('pt-PT', { year: 'numeric', month: 'long' }).format(date);
+  return new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: 'long' }).format(date);
 };
 
 ---
 
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="/favicon.ico">
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>Professional Experience - FVDev</title>
-    <meta name="description" content="Experiência Profissional" />
+    <meta name="description" content="Professional Experience" />
     <ViewTransitions />
   </head>
   <body>
@@ -151,7 +151,7 @@ const formatDate = (dateString: string) => {
     <main>
       <div class="container">
         <!-- Back Button -->
-        <a href="/" class="back-btn">← voltar</a>
+        <a href="/" class="back-btn">← back</a>
 
         <!-- Page Header -->
         <section class="experience-header">
@@ -195,9 +195,9 @@ const formatDate = (dateString: string) => {
 
         <!-- CTA Section -->
         <section class="cta-section">
-          <p>Quer saber mais sobre minha experiência?</p>
+          <p>Want to learn more about my experience?</p>
           <a href="https://pt.linkedin.com/in/franciscovieirafront" target="_blank" class="cta-button">
-            Conecta comigo no LinkedIn
+            Connect with me on LinkedIn
           </a>
         </section>
       </div>
