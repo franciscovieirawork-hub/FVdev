@@ -1,0 +1,119 @@
+---
+interface Props {
+  apps: Array<{ label: string; href: string; description?: string }>;
+}
+
+const { apps } = Astro.props;
+---
+
+<div class="container">
+  <div class="content">
+    <h2 class="title">live apps</h2>
+    <div class="apps-list">
+      {apps.map((app) => (
+        <a
+          href={app.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="app-link"
+        >
+          <span class="app-label">{app.label}</span>
+          <span class="live-badge">live</span>
+        </a>
+      ))}
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    padding: 30px 20px;
+    margin-top: 30px;
+  }
+
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    color: #cccccc;
+    text-transform: uppercase;
+  }
+
+  .apps-list {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .app-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    transition: all 0.2s ease;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+
+  .app-link:hover {
+    color: #ffff00;
+    border-bottom: 1.3px solid #ffff00;
+  }
+
+  .app-label {
+    font-weight: 500;
+  }
+
+  .live-badge {
+    display: inline-block;
+    background-color: rgba(255, 255, 0, 0.15);
+    border: 1px solid #ffff00;
+    color: #ffff00;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    .title {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .apps-list {
+      gap: 15px;
+    }
+
+    .app-link {
+      font-size: 0.85rem;
+    }
+  }
+</style>

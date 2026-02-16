@@ -2,9 +2,21 @@
 import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
+import LiveApps from '../components/LiveApps.astro';
 import SocialLinks from '../components/SocialLinks.astro';
 import AdditionalLinks from '../components/AdditionalLinks.astro';
 import Loader from '../components/Loader.astro';
+
+const liveApps = [
+  { 
+    label: 'ATuaCalculadora', 
+    href: 'https://atuacalcoladora.vercel.app/'
+  },
+  { 
+    label: 'DevDrawer', 
+    href: 'https://dev-drawer.vercel.app/'
+  },
+];
 
 const socialLinks = [
   { label: 'github', href: 'https://github.com/franciscovieirawork-hub' },
@@ -36,6 +48,7 @@ const additionalLinks = [
     <main>
       <div class="content-wrapper">
         <Header />
+        <LiveApps apps={liveApps} />
         <SocialLinks links={socialLinks} />
         <AdditionalLinks links={additionalLinks} />
       </div>

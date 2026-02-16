@@ -7,18 +7,21 @@ const { links } = Astro.props;
 ---
 
 <div class="container">
-  <nav class="nav">
-    {links.map((link) => (
-      <a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="link"
-      >
-        [{link.label}]
-      </a>
-    ))}
-  </nav>
+  <div class="content">
+    <h2 class="title">my Socials</h2>
+    <nav class="nav">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link"
+        >
+          [{link.label}]
+        </a>
+      ))}
+    </nav>
+  </div>
 </div>
 
 <style>
@@ -26,11 +29,24 @@ const { links } = Astro.props;
     padding: 30px 20px;
   }
 
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    color: #cccccc;
+    text-transform: uppercase;
+  }
+
   .nav {
     display: flex;
     gap: 30px;
     flex-wrap: wrap;
-    max-width: 800px;
   }
 
   .link {
@@ -51,6 +67,11 @@ const { links } = Astro.props;
     .container {
       padding: 20px;
       margin-top: 20px;
+    }
+
+    .title {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
     }
 
     .nav {
