@@ -7,66 +7,127 @@ import Loader from '../components/Loader.astro';
 const projectsData = {
   projects: [
     {
-      id: 1,
-      title: 'useCall & useCallGraphQL',
-      shortDescription: 'Powerful React hooks for REST API and GraphQL calls',
+      id: 3,
+      title: 'DevDrawer',
+      shortDescription:
+        'A full-stack app to visually plan and organize software projects',
       description: [
-        'A comprehensive collection of React hooks for handling REST API and GraphQL requests with advanced features.',
-        'The useCall hook provides a fully-featured solution for REST API calls with automatic caching, error handling, and request management.',
-        'The useCallGraphQL hook offers similar functionality specifically optimized for GraphQL queries and mutations, supporting both string queries and DocumentNode format.',
-        'Both hooks include smart caching, TypeScript support, error callbacks, request cancellation, and complete state management.'
+        'DevDrawer is a full stack web application designed for developers and teams to visually plan, structure, and organize software projects.',
+        'It helps you break down work into boards, sections, and items, keeping technical decisions, tasks, and architecture in one structured place.',
+        'The goal is to replace scattered docs and ad‑hoc notes with a focused workspace tailored to engineering workflows.'
       ],
       features: [
-        'Smart cache system that prevents duplicate requests',
-        'Complete TypeScript support with generics',
-        'Error handling with success/error callbacks',
-        'Request cancellation and refetch capabilities',
-        'Support for custom headers and credentials',
-        'GraphQL variables and operation names support',
-        'Configurable cache time and validation',
-        'Automatic cleanup on component unmount'
+        'Project- and board-based organization for development work',
+        'Hierarchical structure for sections, tasks, and notes',
+        'Modern UI optimized for developers',
+        'Built with a TypeScript-first mindset'
       ],
-      technologies: [
-        'React',
-        'TypeScript',
-        'GraphQL',
-        'REST API',
-        'Vite'
+      technologies: ['TypeScript', 'Full-stack web app'],
+      repoUrl: 'https://github.com/franciscovieirawork-hub/devdrawer',
+      liveUrl: 'https://dev-drawer.vercel.app'
+    },
+    {
+      id: 4,
+      title: 'YourCalculator (BETA)',
+      shortDescription:
+        'Fiscal and financial calculators tailored for Portugal',
+      description: [
+        'YourCalculator is a collection of fiscal and financial calculators focused on the Portuguese context, helping users quickly estimate taxes and other financial values.',
+        'The web app is designed to be simple and fast to use, surfacing just the key inputs and outputs needed for everyday financial decisions.',
+        'It is deployed as a standalone web experience so it is easy to share and use from any device.'
       ],
+      features: [
+        'Multiple calculators for Portuguese fiscal and financial scenarios',
+        'Simple UX optimized for quick inputs and clear results',
+        'Continuously evolving as new calculators and rules are added'
+      ],
+      technologies: ['TypeScript', 'React', 'Web app'],
+      repoUrl: 'https://github.com/franciscovieirawork-hub/yourCalculator',
+      liveUrl: 'https://atuacalculadora.vercel.app/'
+    },
+    {
+      id: 5,
+      title: 'AboutF1 (Work in progress still)',
+      shortDescription:
+        'Web and native app about Formula 1, tracks, teams, and cars',
+      description: [
+        'AboutF1 is a project focused on Formula 1, bringing together information about live events, tracks, pits, teams, cars, and more.',
+        'The project targets both web and native (iOS & Android) platforms, exploring how to share logic and UX patterns across experiences.',
+        'It is a playground for experimenting with motorsport data, rich UI, and multi-platform application architecture.'
+      ],
+      features: [
+        'Centralized hub for Formula 1 information',
+        'Support for both web and native app experiences',
+        'Focus on rich, visually engaging UI for motorsport fans'
+      ],
+      technologies: ['TypeScript', 'Web & native app'],
+      repoUrl: 'https://github.com/franciscovieirawork-hub/aboutf1',
+      liveUrl: null
+    },
+    {
+      id: 6,
+      title: 'FVDev Portfolio',
+      shortDescription:
+        'Personal website and portfolio built with Astro and React',
+      description: [
+        'FVDev is this personal website and portfolio, built to showcase projects, experience, and links in a minimal, high-contrast interface.',
+        'The site is built with Astro and React, focusing on fast performance, clean typography, and a content structure tailored to developers.',
+        'It serves as a central hub for your professional journey, open-source work, and ways to get in touch.'
+      ],
+      features: [
+        'Fast, minimal and responsive portfolio',
+        'Astro + React architecture with modern tooling',
+        'Dedicated pages for experience, GitHub projects, and contact'
+      ],
+      technologies: ['Astro', 'React', 'TypeScript', 'CSS'],
+      repoUrl: 'https://github.com/franciscovieirawork-hub/FVdev',
+      liveUrl: 'https://f-vdev.vercel.app'
+    },
+    {
+      id: 1,
+      title: 'useCall & useCallGraphQL',
+      shortDescription:
+        'Powerful and customizable React hooks for REST API and GraphQL calls',
+      description: [
+        'A pair of React hooks designed to make REST API and GraphQL requests predictable, strongly typed, and easy to reuse across your application.',
+        'useCall handles REST endpoints with built-in loading, error, and success states, plus automatic request deduplication and cancellation.',
+        'useCallGraphQL focuses on GraphQL queries and mutations, supporting both raw string queries and DocumentNode, with first-class variables and operation names.',
+        'Both hooks are written in TypeScript and are ideal for projects that need a consistent, reusable data-fetching layer without adopting a full-blown data library.'
+      ],
+      features: [
+        'Smart cache that prevents duplicate requests and supports refetching',
+        'Strong TypeScript generics for request and response types',
+        'Configurable success and error callbacks for side effects',
+        'Request cancellation and automatic cleanup on unmount',
+        'GraphQL support with variables and operation names',
+        'Custom headers, credentials, and fetch options per call'
+      ],
+      technologies: ['React', 'TypeScript', 'GraphQL', 'REST API', 'Vite'],
       repoUrl: 'https://github.com/franciscovieirawork-hub/useCall_useCallGraphQL',
       liveUrl: null
     },
     {
       id: 2,
       title: 'React Card Component System',
-      shortDescription: 'Flexible and reusable card components with state management',
+      shortDescription:
+        'Default and expandable card components built with React and TypeScript',
       description: [
-        'A modern, fully-featured card component system built with React and TypeScript.',
-        'This system provides two types of cards: base cards for displaying simple content and expandable cards for collapsible content.',
-        'Features a powerful selection system with radio buttons and global state management using Zustand.',
-        'Includes comprehensive state management, responsive design, smooth animations, and full TypeScript type safety.'
+        'A small React component system that provides opinionated, accessible card components for modern UIs.',
+        'It includes a default card for simple content blocks and an expandable card for sections that can be toggled open and closed.',
+        'The system is written in TypeScript and is built to be copy–paste friendly, so you can adapt it to your own design system.',
+        'Ideal for dashboards, settings pages, and any layout that needs clean, reusable content blocks.'
       ],
       features: [
-        'Two card types: Base cards and Expandable cards',
-        'Radio button-based selection system',
-        'Global state management with Zustand',
-        'Fully responsive and mobile-friendly design',
-        'Smooth animations and transitions',
-        'CSS-in-JS styling with Styled Components',
-        'Full TypeScript support',
-        'Accessible and semantic HTML'
+        'Default and expandable card variants',
+        'Controlled and uncontrolled expand / collapse behavior',
+        'TypeScript-first API with clear prop types',
+        'Responsive layout and smooth hover / focus states',
+        'Easy to integrate into existing React projects'
       ],
-      technologies: [
-        'React 19',
-        'TypeScript',
-        'Zustand',
-        'Styled Components',
-        'Emotion',
-        'Vite'
-      ],
+      technologies: ['React', 'TypeScript', 'Vite'],
       repoUrl: 'https://github.com/franciscovieirawork-hub/react-card',
       liveUrl: null
-    }
+    },
   ]
 };
 
