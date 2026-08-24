@@ -3,9 +3,21 @@ import { ViewTransitions } from 'astro:transitions';
 import '../styles/global.css';
 import Loader from '../components/Loader.astro';
 
-// Mock Data
+const parseYearMonth = (dateString: string) => {
+  const [year, month] = dateString.split('-').map(Number);
+  return new Date(year, (month || 1) - 1, 1);
+};
+
+const getYearsOfExperience = (experiences: Array<{ startDate: string }>) => {
+  const startDates = experiences.map((experience) => parseYearMonth(experience.startDate));
+  const careerStart = new Date(Math.min(...startDates.map((date) => date.getTime())));
+  const now = new Date();
+  const milliseconds = now.getTime() - careerStart.getTime();
+  const years = milliseconds / (1000 * 60 * 60 * 24 * 365.25);
+  return Number(years.toFixed(1));
+};
+
 const professionalExperience = {
-  totalYearsOfExperience: 7.2,
   experiences: [
     {
       role: 'Frontend Developer | Team Lead',
@@ -169,6 +181,8 @@ const professionalExperience = {
   ]
 };
 
+const totalYearsOfExperience = getYearsOfExperience(professionalExperience.experiences);
+
 const formatDate = (dateString: string) => {
   if (dateString === 'Present') return 'Present';
   const [year, month] = dateString.split('-');
@@ -199,7 +213,7 @@ const formatDate = (dateString: string) => {
         <!-- Page Header -->
         <section class="experience-header">
           <h1>professional experience</h1>
-          <p class="subtitle">{professionalExperience.totalYearsOfExperience} years of crafting digital experiences</p>
+          <p class="subtitle">{totalYearsOfExperience} years of crafting digital experiences</p>
         </section>
 
         <!-- Experience Timeline -->
