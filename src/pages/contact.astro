@@ -82,9 +82,14 @@ const contactData = {
           <!-- CTA Section -->
           <div class="cta-section">
             <p>{contactData.cta}</p>
-            <a href={`mailto:${contactData.email}`} class="cta-button">
-              send an email
-            </a>
+            <div class="cta-actions">
+              <a href="/francisco-vieira-cv.pdf" class="cta-button" download="Francisco-Vieira-CV.pdf">
+                download my CV
+              </a>
+              <a href={`mailto:${contactData.email}`} class="cta-button">
+                send an email
+              </a>
+            </div>
           </div>
         </section>
       </div>
@@ -294,6 +299,13 @@ const contactData = {
     color: #999999;
     margin-bottom: 20px;
     letter-spacing: 0.01em;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .cta-button {

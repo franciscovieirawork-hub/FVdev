@@ -11,7 +11,7 @@ const aboutData = {
     'Hello! I’m Francisco, a full-stack software developer with a strong focus on building modern, scalable, and user-centered web applications. I enjoy transforming complex ideas into clean, efficient, and maintainable digital solutions.',
     'I specialize in TypeScript and React, with solid experience across the full stack, including application architecture, object-oriented design, and backend development with C#. I value well-structured systems, clean code, and thoughtful technical decisions that scale over time.',
     'I am deeply passionate about software engineering and continuously explore AI-driven tools and workflows to enhance productivity, code quality, and delivery speed—while always maintaining strong engineering standards and best practices.',
-    'Outside of development, I have a strong interest in physics-related fields such as mathematics, astronomy, and aerodynamics. I am also a car enthusiast, particularly fascinated by high-performance sports cars and how aerodynamics influence design and engineering.',
+    'Outside of development, I have a strong passion for sports, competition, and health and well-being. I actively compete in road and trail running and practice surfing, swimming, cycling, and strength training. I am also particularly interested in physiotherapy, sports performance, and the science behind physical health and recovery.',
     'I thrive in collaborative, modern, and relaxed teams that value ownership, knowledge sharing, and continuous improvement. I am always open to new challenges, opportunities, and meaningful collaborations.'
   ],
   linkedinUrl: 'https://www.linkedin.com/in/franciscovieiradev/',
@@ -92,9 +92,14 @@ const aboutData = {
 
           <div class="cta-section">
             <p>{aboutData.ctaText}</p>
-            <a href={aboutData.linkedinUrl} target="_blank" class="cta-button">
-              {aboutData.ctaButtonText}
-            </a>
+            <div class="cta-actions">
+              <a href="/francisco-vieira-cv.pdf" class="cta-button" download="Francisco-Vieira-CV.pdf">
+                download my CV
+              </a>
+              <a href={aboutData.linkedinUrl} target="_blank" class="cta-button">
+                {aboutData.ctaButtonText}
+              </a>
+            </div>
           </div>
         </section>
       </div>
@@ -228,6 +233,13 @@ const aboutData = {
     font-size: 1rem;
     color: #999999;
     margin-bottom: 20px;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .cta-button {
