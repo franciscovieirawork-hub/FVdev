@@ -1,6 +1,6 @@
 ---
 interface Props {
-  links: Array<{ label: string; href: string }>;
+  links: Array<{ label: string; href: string; download?: string }>;
 }
 
 const { links } = Astro.props;
@@ -12,9 +12,15 @@ const { links } = Astro.props;
     <ul class="list">
       {links.map((link) => (
         <li>
-          <a href={link.href} rel="noopener noreferrer">
-            {link.label}
-          </a>
+          {link.download ? (
+            <a href={link.href} download={link.download}>
+              {link.label}
+            </a>
+          ) : (
+            <a href={link.href}>
+              {link.label}
+            </a>
+          )}
         </li>
       ))}
     </ul>

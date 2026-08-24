@@ -253,9 +253,14 @@ const formatDate = (dateString: string) => {
         <!-- CTA Section -->
         <section class="cta-section">
           <p>Want to learn more about my experience?</p>
-          <a href="https://www.linkedin.com/in/franciscovieiradev/" target="_blank" class="cta-button">
-            Connect with me on LinkedIn
-          </a>
+          <div class="cta-actions">
+            <a href="/francisco-vieira-cv.pdf" class="cta-button" download="Francisco-Vieira-CV.pdf">
+              download my CV
+            </a>
+            <a href="https://www.linkedin.com/in/franciscovieiradev/" target="_blank" class="cta-button">
+              connect with me on LinkedIn
+            </a>
+          </div>
         </section>
       </div>
     </main>
@@ -447,6 +452,13 @@ const formatDate = (dateString: string) => {
     color: #999999;
     margin-bottom: 20px;
     letter-spacing: 0.01em;
+  }
+
+  .cta-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
   }
 
   .cta-button {
